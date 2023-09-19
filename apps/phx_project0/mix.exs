@@ -38,7 +38,8 @@ defmodule PhxProject0.MixProject do
     [
       {:phoenix_pubsub, "~> 2.1"},
       {:swoosh, "~> 1.3"},
-      {:finch, "~> 0.13"}
+      {:finch, "~> 0.13"},
+      {:httpoison, "~> 2.0"}
     ]
   end
 
