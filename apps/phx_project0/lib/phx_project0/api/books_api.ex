@@ -11,7 +11,7 @@ defmodule PhxProject0.Api.BooksApi do
     Poison.decode(response.body)
   end
 
-  #id er en streng.
+  #id is a string.
   def get_order_by_id(auth,id) do
     url = "https://simple-books-api.glitch.me/orders/#{id}"
 
@@ -39,9 +39,7 @@ defmodule PhxProject0.Api.BooksApi do
 
 
     def post_client_for_token(body) do
-    IO.puts("BODY: #{body}")
     url = "https://simple-books-api.glitch.me/api-clients/"
-
     headers = [{"Content-type", "application/json"}]
     response = HTTPoison.post!(url,body,headers,[])
     #Skal bruge den her ellers  kalde den på em måde 2 gange?. Der betyder den siger klienten allerede findes
