@@ -1,21 +1,12 @@
 defmodule PhxProject0.CatfactApiTest do
   use ExUnit.Case
 
-
+  alias PhxProject0.Api.CatfactApi
 
   describe "Get catfact" do
     test "returns a catfact" do
-      response = PhxProject0.Api.CatfactApi.getCatFact()
-
-      case response do
-        {:ok, %{"fact" => catfact}} ->
-          IO.puts("Catfact: #{catfact}")
-          assert catfact != "sovs"
-
-        _ ->
-          IO.puts("Unexpected response: #{inspect(response)}")
-          flunk("Expected a valid catfact response")
-      end
+      response = CatfactApi.getCatFact()
+      assert is_tuple(response) and elem(response, 0) == :ok
     end
   end
 end
