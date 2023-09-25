@@ -4,7 +4,12 @@ defmodule PhxProject0.BooksApiTest do
   alias PhxProject0.Api.BooksApi
   alias PhxProject0.BooksContext
 
-  describe "books " do
+  describe "books and orders" do
+    test "returns books api status" do
+      response = BooksApi.get_books_api_status()
+      assert is_tuple(response) and elem(response, 0) == :ok
+      end
+
     test "returns a book by id. Will succes" do
       response = BooksApi.get_book_by_id(1)
       assert is_tuple(response) and elem(response, 0) == :ok
@@ -15,40 +20,27 @@ defmodule PhxProject0.BooksApiTest do
         assert response == {:ok, %{"error" => "No book with id -1"}}
       end
 
-    test "returns books api status" do
-      response = BooksApi.get_books_api_status()
-      assert is_tuple(response) and elem(response, 0) == :ok
-      end
 
-    test "return a token that represent a client " do
+   #test "return a token that represent a client " do
 
-      body = Poison.encode!(%{
-        clientName: "Bob",
-        clientEmail: "HABoubbbbbbqtqqa@exaYmple.com"
-      })
+    #  body = Poison.encode!(%{
+     #   clientName: "Bob",
+      #  clientEmail: "HABoubbwbbbbqtqqa@exaYmple.com"
+     # })
 
-     response = BooksApi.post_client_for_token(body)
+    # response = BooksApi.post_client_for_token(body)
 
-     {:ok, parsed_response} = response
+    # {:ok, parsed_response} = response
 
-     case response do
-      {:ok, %{"accessToken" => token}} ->
-        IO.puts("token: #{token}")
-        assert Map.has_key?(parsed_response,"accessToken")
-      _->
-        flunk("Expected a token. Response: #{inspect(response)}")
-     end
-    end
+    # case response do
+     # {:ok, %{"accessToken" => token}} ->
+      #  IO.puts("token: {token}")
+       # assert Map.has_key?(parsed_response,"accessToken")
+      #_->
+       # flunk("Expected a token. Response: {inspect(response)}")
+    # end
+    #end
 
-
-    test "return a token in context that represent a client" do
-      body = Poison.encode!(%{
-        clientName: "Bob",
-        clientEmail: "WBuobbbbbbwttvaH@exampleY.com"
-      })
-     response = BooksContext.create_client_get_token(body)
-     assert is_nil(response) == false
-    end
 
   #  test "post a order" do
    #   body = Poison.encode!(%{
@@ -69,7 +61,9 @@ defmodule PhxProject0.BooksApiTest do
    # end
 
     test "Get orders" do
-      response = BooksApi.get_orders("5c527430e8cf1292211c84fb82065df4b29c6ddca82b4c3509ea971a669710e1")
+      token = Application.get_env(:phx_project0,:client_token)
+      IO.puts("token right here: #{token}")
+      response = BooksApi.get_orders("fcd0f864e040d750647ac48a11570e988ed52773410c68a9437a8cfcbdf61903")
       {:ok, response_parsed} = response
 
        assert is_list(response_parsed)

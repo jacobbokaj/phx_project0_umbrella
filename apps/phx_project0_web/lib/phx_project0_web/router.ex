@@ -20,6 +20,12 @@ defmodule PhxProject0Web.Router do
     get "/", PageController, :home
   end
 
+  scope "/", PhxProject0Web do
+    pipe_through :browser
+
+    live "/books",BooksComponent
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", PhxProject0Web do
   #   pipe_through :api

@@ -19,6 +19,16 @@ config :phx_project0_web, PhxProject0Web.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
+
+
+
+config :phx_project0, client_token: "fcd0f864e040d750647ac48a11570e988ed52773410c68a9437a8cfcbdf61903"
+
+
+
+
+
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
