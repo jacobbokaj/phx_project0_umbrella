@@ -1,6 +1,6 @@
 # PhxProject0.Umbrella With Simple book api
 ## Description 📜
-Use a [Simple book](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) api's endpoints on a website visuel with buttons and input forms. This is **Localhost:4000**
+Using an [Simple book](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) api's endpoints on a website visuel with buttons and input forms. This is **Localhost:4000**
 ## Features 🕹
 ### On the website 🖥
 #### Done 🟢
